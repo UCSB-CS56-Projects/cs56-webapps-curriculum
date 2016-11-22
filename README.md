@@ -3,7 +3,6 @@
 A demo of:
 
 * a [SparkJava webapp](http://pconrad-webapps.github.io/topics/sparkjava/),
-* that provides a front end to a backend [MongoDB database](http://pconrad-webapps.github.io/topics/mongodb/),
 * loaded with data from the https://github.com/UCSB-CS56-Projects/cs56-scrapers-ucsb-curriculum
 
 # Requires Java 1.8, and Maven (`mvn` command)
