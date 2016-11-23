@@ -11,7 +11,7 @@ To build, use `mvn package`
 
 To run, use `java -jar target/cs56-webapps-curriculum-1.0-SNAPSHOT.jar`
 
-Demo on Heroku at: https://cs56-webapps-curriculum.herokuapp.com/
+Demo on Heroku at:  https://cs56-webapps-curriculum.herokuapp.com/
 
 
 # See also: 
