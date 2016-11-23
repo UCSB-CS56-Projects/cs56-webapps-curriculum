@@ -22,14 +22,18 @@
   <thead>
   <tr>
     <th>Course Title</th>
+    <th>Course Capacity</th>
+    <th>Course Instructor</th>
     <th>Enroll Code</th>
   </tr>
   </thead>
   <tbody>
   {{#lectures}}
   <tr>
-    <th>{{courseTitle}}</th>
-    <th>{{enrollCode}}</th>
+    <td>{{courseTitle}}</td>
+    <td>{{capacity}}</td>
+    <td>{{instructor}}</td>
+    <td>{{enrollCode}}</td>
   </tr>
   {{/lectures}}
   </tbody>
