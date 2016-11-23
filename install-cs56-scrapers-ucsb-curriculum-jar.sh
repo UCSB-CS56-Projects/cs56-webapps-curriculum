@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 
-targetjar=cs56-scrapers-ucsb-curriculum
-targetjarversion=1.0
-targetjarfile=cs56-scrapers-ucsb-curriculum-1.0.jar
+targetjar=cs56-foobar-ucsb-curriculum
+targetjarversion=2.0
+targetjarfile=cs56-foobar-ucsb-curriculum-2.0.jar
 
 function mvn_deploy {
     mvn clean -U     

@@ -12,7 +12,6 @@
 <div class="table-responsive">
 <table class="table-striped table-bordered">
   <tr><th>major_code</th><td>{{major_code}}</td></tr>
-  <tr><th>major_name</th><td>{{major_name}}</td></tr>
 </table>
 </div>
 
@@ -22,19 +21,17 @@
 <table id="results-table" class="display" cellspacing="0" width="100%">
   <thead>
   <tr>
-    <th>code</th>
-    <th>major code</th>
-    <th>median earnings</th>
+    <th>Course Title</th>
+    <th>Enroll Code</th>
   </tr>
   </thead>
   <tbody>
-  {{#majors}}
+  {{#lectures}}
   <tr>
-    <th>{{majorInformation.majorCode}}</th>
-    <th>{{majorInformation.major}}</th>
-    <th>{{earnings.earningsBreakdown.medianEarnings}}</th>
+    <th>{{courseTitle}}</th>
+    <th>{{enrollCode}}</th>
   </tr>
-  {{/majors}}
+  {{/lectures}}
   </tbody>
 </table>
 

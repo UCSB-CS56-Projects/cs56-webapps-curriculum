@@ -18,9 +18,16 @@
 package org.pconrad.webapps.curriculum;
 
 
+import edu.ucsb.cs56.projects.scrapers.ucsb_curriculum.UCSBCurriculumSearch;
+import edu.ucsb.cs56.projects.scrapers.ucsb_curriculum.UCSBLecture;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 
 import org.pconrad.webapps.sparkjava.MustacheTemplateEngine;
 
@@ -69,25 +76,29 @@ public class UCSBCurriculumWebapp {
 	    {
 		Map model = new HashMap();
 		String majorCodeAsString = rq.queryParams("major_code"); // get value from form
-		int majorCodeAsInt = 0;
+
 		try {
-		    majorCodeAsInt = Integer.parseInt(majorCodeAsString);
-		} catch (NumberFormatException nfe) {
-		    model.put("error","The majorcode entered was invalid:" + majorCodeAsString);
-		    return new ModelAndView(model, "lookup.majorcode.result.mustache");
-		}
+		    UCSBCurriculumSearch uccs = new UCSBCurriculumSearch();
+		    uccs.loadCourses(majorCodeAsString,
+				     "20171",
+				     "Undergraduate");
+		    ArrayList<UCSBLecture> lectures =
+			uccs.getLectures();
+		    System.out.println("lectures=" + lectures);
+		    model.put("major_code",majorCodeAsString);
+		    model.put("lectures",lectures);		    
 		    
-		ArrayList<String> majors
-		    = new ArrayList<String>();
+		} catch (Exception ex) {
+		    StringWriter sw = new StringWriter();
+		    ex.printStackTrace(new PrintWriter(sw));
+		    String exceptionAsString = sw.toString();		    
+		    model.put("error",exceptionAsString);
 
-		majors.add("CMPSC");
-		majors.add("MATH");
-
-		model.put("major_code",majorCodeAsString);
-
-		model.put("majors",majors);
-		
-		return new ModelAndView(model, "lookup.majorcode.result.mustache");
+		    
+		}
+	
+		return new ModelAndView(model,
+					"lookup.majorcode.result.mustache");
 	    },
 	    new MustacheTemplateEngine()
 	    );
