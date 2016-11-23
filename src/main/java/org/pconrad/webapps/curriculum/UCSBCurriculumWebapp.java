@@ -76,7 +76,9 @@ public class UCSBCurriculumWebapp {
 	    {
 		Map model = new HashMap();
 		String majorCodeAsString = rq.queryParams("major_code"); // get value from form
-
+		System.out.println("majorCodeAsString=" + majorCodeAsString);
+		model.put("major_code",majorCodeAsString);
+		
 		try {
 		    UCSBCurriculumSearch uccs = new UCSBCurriculumSearch();
 		    uccs.loadCourses(majorCodeAsString,
@@ -85,16 +87,15 @@ public class UCSBCurriculumWebapp {
 		    ArrayList<UCSBLecture> lectures =
 			uccs.getLectures();
 		    System.out.println("lectures=" + lectures);
-		    model.put("major_code",majorCodeAsString);
+
 		    model.put("lectures",lectures);		    
 		    
 		} catch (Exception ex) {
+		    ex.printStackTrace();
 		    StringWriter sw = new StringWriter();
 		    ex.printStackTrace(new PrintWriter(sw));
 		    String exceptionAsString = sw.toString();		    
 		    model.put("error",exceptionAsString);
-
-		    
 		}
 	
 		return new ModelAndView(model,
