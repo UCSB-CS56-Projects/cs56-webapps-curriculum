@@ -71,6 +71,41 @@ public class UCSBCurriculumWebapp {
 	    (rq, rs) ->
 	    new ModelAndView(nullMap, "lookup.majorcode.mustache"), new MustacheTemplateEngine());
 
+	get("/lookup/CMPSC",
+	    (rq, rs) -> {
+		Map model = new HashMap();
+		String majorCodeAsString = "CMPSC";
+		System.out.println("majorCodeAsString=" + majorCodeAsString);
+		model.put("major_code",majorCodeAsString);
+		
+		try {
+		    UCSBCurriculumSearch uccs = new UCSBCurriculumSearch();
+		    uccs.loadCourses(majorCodeAsString,
+				     "20171",
+				     "Undergraduate");
+		    ArrayList<UCSBLecture> lectures =
+			uccs.getLectures();
+		    System.out.println("lectures=" + lectures);
+
+		    model.put("lectures",lectures);		    
+		    
+		} catch (Exception ex) {
+		    ex.printStackTrace();
+		    StringWriter sw = new StringWriter();
+		    ex.printStackTrace(new PrintWriter(sw));
+		    String exceptionAsString = sw.toString();		    
+		    model.put("error",exceptionAsString);
+		}
+		return new ModelAndView(model,
+					"lookup.majorcode.result.mustache");
+	    },
+	    new MustacheTemplateEngine()
+		);
+	
+	
+		
+	
+	
 	get("/lookup/majorcode/result",
 	    (rq, rs) ->
 	    {

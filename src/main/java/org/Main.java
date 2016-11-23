@@ -10,10 +10,17 @@ public class Main { // implicit: public class Main extends object
 	    java.util.ArrayList<UCSBLecture> lectures =
 		uccs.getLectures();
             System.out.println("We good");
-	    System.out.println("lectures=" + lectures);
+	    for (UCSBLecture lect:lectures){
+		     System.out.println(lect);
+		     for (UCSBSection s: lect.getSections()){
+			 System.out.println(s);
+		     }
+			 
+		}
         }
-        catch(Exception E){
+        catch(Exception e){
             System.out.println(":-(");
+	    e.printStackTrace();
         }
     }
 }

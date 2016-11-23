@@ -21,20 +21,31 @@
 <table id="results-table" class="display" cellspacing="0" width="100%">
   <thead>
   <tr>
-    <th>Course Title</th>
-    <th>Course Capacity</th>
-    <th>Course Instructor</th>
+    <th> Title</th>
+    <th> Capacity</th>
+    <th> Instructor</th>
+        <th> LectureDays</th>
     <th>Enroll Code</th>
   </tr>
   </thead>
   <tbody>
   {{#lectures}}
+    <tr>
+      <td>{{courseTitle}}</td>
+      <td>{{capacity}}</td>
+      <td>{{instructor}}</td>
+      <td>{{lectDays}}</td>
+      <td>{{enrollCode}}</td>
+
+    </tr>
+    {{#sections}}
   <tr>
-    <td>{{courseTitle}}</td>
-    <td>{{capacity}}</td>
-    <td>{{instructor}}</td>
-    <td>{{enrollCode}}</td>
-  </tr>
+    <td> {{enrollCode}}</td>
+    <td>{{sectionDay}}</td>
+    <td>{{sectionTime}}</td>
+    <td>{{sectionRoom}}</td>
+    </tr>
+    {{/sections}}
   {{/lectures}}
   </tbody>
 </table>
