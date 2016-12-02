@@ -26,4 +26,4 @@ function main {
     mvn_deploy 
 }
 
-[ "$#" -ne 0 ] && ( usage && exit 1 ) || main "$1"
+[ "$#" -ne 0 ] && ( usage && exit 1 ) || main 
